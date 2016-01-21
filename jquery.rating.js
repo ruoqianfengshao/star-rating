@@ -63,7 +63,7 @@
 			// issue #10 - https://github.com/fyneworks/star-rating/issues/10
 			if(!input.is('input')){
 				if(options.stars){
-					
+
 					// insert newly created form elements
 					input.html(Array(options.stars+1).join(
 						'<input type="radio" name="'+ control_name +'"/>'
@@ -146,7 +146,8 @@
 			} // first element of group
 
 			// insert rating star (thanks Jan Fanslau rev125 for blind support https://code.google.com/p/jquery-star-rating-plugin/issues/detail?id=125)
-			var star = $('<div role="text" aria-label="'+ (this.title || this.value) +'" class="star-rating rater-'+ control.serial +'"><a title="' + (this.title || this.value) + '">' + this.value + '</a></div>');
+			// add entire star class for css
+			var star = $('<div role="text" aria-label="'+ this.title +'" class="star-rating rater-'+ control.serial + ' ' + (control.count && !((control.count + 1) % control.split) ? "entire-star" : "") +'"><a title="' + (this.title || this.value) + '">' + this.value + '</a></div>');
 			rater.append(star);
 
 			// inherit attributes from input element
